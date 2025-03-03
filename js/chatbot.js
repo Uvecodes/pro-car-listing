@@ -112,10 +112,14 @@ function toggleChat() {
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
-    // Add initial greeting
-    setTimeout(() => {
-        addMessage(getRandomResponse(botResponses.greetings));
-    }, 1000);
+    // Set initial state to minimized
+    const chatBody = document.getElementById('chatBody');
+    const chatInput = document.querySelector('.chat-input');
+    chatBody.style.display = 'none';
+    chatInput.style.display = 'none';
+    
+    // Add initial greeting (will be shown when user opens chat)
+    addMessage(getRandomResponse(botResponses.greetings));
     
     // Handle enter key in input
     const userInput = document.getElementById('userInput');
