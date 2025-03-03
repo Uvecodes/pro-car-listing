@@ -1,0 +1,325 @@
+/* Global Styles */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 76px;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 600px;
+    background: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+    background-size: cover;
+    transition: transform 0.5s ease, background-size 0.5s ease;
+    overflow: hidden;
+}
+
+.hero-section:hover {
+    transform: scale(1.02);
+}
+
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    transition: background 0.3s ease;
+}
+
+.hero-section:hover .overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section:hover h1 {
+    transform: scale(1.05);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section .lead {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.8s 0.2s forwards;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section:hover .lead {
+    transform: scale(1.05);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+.search-box {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.8s 0.4s forwards;
+    transition: all 0.3s ease;
+}
+
+.hero-section:hover .search-box {
+    transform: translateY(-10px);
+}
+
+.search-box .form-control {
+    border: none;
+    border-radius: 30px;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.search-box .form-control:focus {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 1);
+}
+
+.search-box .btn {
+    border-radius: 30px;
+    padding: 15px 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-box .btn:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Car Cards */
+.car-card {
+    transition: transform 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.car-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.car-card .card-body {
+    padding: 1.25rem;
+}
+
+.car-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Chatbot */
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.chat-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.chat-header .fa-comments {
+    font-size: 1.2rem;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.chat-header:hover .fa-comments {
+    transform: scale(1.1);
+}
+
+.btn-minimize {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.btn-minimize:hover {
+    transform: scale(1.1);
+}
+
+.chat-body {
+    height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    scroll-behavior: smooth;
+}
+
+.chat-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 0 0 15px 15px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.chat-input button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chat-input button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.chat-message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 85%;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+.user-message {
+    background: var(--primary-color);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+    background: #f1f1f1;
+    border-bottom-left-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 400px;
+    }
+    
+    .chatbot {
+        width: 280px;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    margin-top: 3rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color) !important;
+} 

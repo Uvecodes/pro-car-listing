@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealer Dashboard - CarListing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">CarListing</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dealer-dashboard.html">Dealer Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#overview" data-bs-toggle="tab">
+                                <i class="fas fa-tachometer-alt me-2"></i>
+                                Overview
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#listings" data-bs-toggle="tab">
+                                <i class="fas fa-car me-2"></i>
+                                My Listings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#messages" data-bs-toggle="tab">
+                                <i class="fas fa-envelope me-2"></i>
+                                Messages
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#profile" data-bs-toggle="tab">
+                                <i class="fas fa-user me-2"></i>
+                                Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#settings" data-bs-toggle="tab">
+                                <i class="fas fa-cog me-2"></i>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="tab-content" id="myTabContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Dashboard Overview</h1>
+                            <div class="btn-toolbar mb-2 mb-md-0">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addListingModal">
+                                    <i class="fas fa-plus me-2"></i>Add New Listing
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Stats Cards -->
+                        <div class="row">
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-primary">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Active Listings</h5>
+                                        <h2 class="card-text">12</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-success">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Views</h5>
+                                        <h2 class="card-text">1,234</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-info">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Messages</h5>
+                                        <h2 class="card-text">23</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-warning">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Saved Cars</h5>
+                                        <h2 class="card-text">45</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <h3>Recent Activity</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Activity</th>
+                                        <th>Details</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2024-03-20</td>
+                                        <td>New Listing</td>
+                                        <td>2022 Toyota Camry</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2024-03-19</td>
+                                        <td>Message</td>
+                                        <td>Inquiry about BMW 3 Series</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2024-03-18</td>
+                                        <td>Price Update</td>
+                                        <td>Honda CR-V</td>
+                                        <td><span class="badge bg-info">Updated</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Listings Tab -->
+                    <div class="tab-pane fade" id="listings">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h1 class="h2">My Listings</h1>
+                        </div>
+                        <div class="row" id="myListings">
+                            <!-- Listings will be loaded here dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Messages Tab -->
+                    <div class="tab-pane fade" id="messages">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Messages</h1>
+                        </div>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">John Doe</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Interested in the BMW 3 Series. Is it still available?</p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Jane Smith</h5>
+                                    <small>5 days ago</small>
+                                </div>
+                                <p class="mb-1">Can we schedule a test drive for the Toyota Camry?</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Profile Tab -->
+                    <div class="tab-pane fade" id="profile">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Dealer Profile</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Personal Information</h5>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label class="form-label">Dealership Name</label>
+                                                <input type="text" class="form-control" value="Premium Auto Sales">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" class="form-control" value="contact@premiumauto.com">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Phone</label>
+                                                <input type="tel" class="form-control" value="(555) 123-4567">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Address</label>
+                                                <textarea class="form-control">123 Auto Drive, Car City, CC 12345</textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div class="tab-pane fade" id="settings">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Account Settings</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Notification Settings</h5>
+                                        <form>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="emailNotif" checked>
+                                                <label class="form-check-label" for="emailNotif">Email Notifications</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="smsNotif" checked>
+                                                <label class="form-check-label" for="smsNotif">SMS Notifications</label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Listing Modal -->
+    <div class="modal fade" id="addListingModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Listing</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addListingForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Make</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Model</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Year</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Price</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Mileage</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Features</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature1">
+                                        <label class="form-check-label" for="feature1">Bluetooth</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature2">
+                                        <label class="form-check-label" for="feature2">Navigation</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature3">
+                                        <label class="form-check-label" for="feature3">Leather Seats</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature4">
+                                        <label class="form-check-label" for="feature4">Sunroof</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature5">
+                                        <label class="form-check-label" for="feature5">Backup Camera</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature6">
+                                        <label class="form-check-label" for="feature6">Apple CarPlay</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Upload Images</label>
+                            <input type="file" class="form-control" multiple accept="image/*">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="submitListing()">Add Listing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Load dealer's listings
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDealerListings();
+        });
+
+        function loadDealerListings() {
+            const listingsContainer = document.getElementById('myListings');
+            // Use the same cars array from main.js for demo
+            if (typeof cars !== 'undefined') {
+                listingsContainer.innerHTML = cars.map(car => `
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="${car.image}" class="card-img-top" alt="${car.make} ${car.model}">
+                            <div class="card-body">
+                                <h5 class="card-title">${car.year} ${car.make} ${car.model}</h5>
+                                <p class="car-price">${formatPrice(car.price)}</p>
+                                <p class="card-text">Mileage: ${car.mileage.toLocaleString()} miles</p>
+                                <div class="btn-group w-100">
+                                    <button class="btn btn-primary" onclick="editListing(${car.id})">Edit</button>
+                                    <button class="btn btn-danger" onclick="deleteListing(${car.id})">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function submitListing() {
+            // Here you would typically handle the form submission
+            alert('Listing added successfully!');
+            $('#addListingModal').modal('hide');
+        }
+
+        function editListing(id) {
+            // Here you would typically open the edit modal with the listing details
+            alert('Edit listing ' + id);
+        }
+
+        function deleteListing(id) {
+            if (confirm('Are you sure you want to delete this listing?')) {
+                // Here you would typically make an API call to delete the listing
+                alert('Listing ' + id + ' deleted successfully');
+            }
+        }
+
+        function logout() {
+            // Here you would typically handle the logout process
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html> 
